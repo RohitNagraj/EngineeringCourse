@@ -1,14 +1,15 @@
 #include<stdio.h>
 #include<ctype.h>
+#define SIZE 40
 
-int stack[40],top=-1;
-char infix[40],postfix[40];
+int stack[SIZE],top=-1;
+char infix[SIZE],postfix[SIZE];
 
 void push(char element)
 {
 	//Input: char
 	//Pushes the input character into the stack
-	if(top==19)
+	if(top==SIZE-1)
 		printf("Error: Stack overflow");
 	else
 	{

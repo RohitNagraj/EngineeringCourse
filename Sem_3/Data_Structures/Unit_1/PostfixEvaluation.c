@@ -3,9 +3,10 @@
 #include<ctype.h>
 #include<math.h>
 #include<string.h>
+#define SIZE 40
 
 int stack[10], top=-1;
-char postfix[40];
+char postfix[SIZE];
 
 int isEmpty()
 {
@@ -54,6 +55,7 @@ int isValidSingleDigitPostfix()
 
   if(isdigit(postfix[0]) && postfix[1]=='\0')
     return(isValidExpression);
+
   if(!(isdigit(postfix[0]) && isdigit(postfix[1])))
     return(--isValidExpression);
 
@@ -292,7 +294,7 @@ void singleDigitEvaluate()
   if(zeroDivision==1)
     printf("The result is: NaN\n");
   else if(zeroDivision==2)
-    printf("The result is: %c\n",236);
+    printf("The result is: %c\n",236); //236 is the ascii of infinity symbol
   else
     printf("The result is: %d\n",pop());
 }
