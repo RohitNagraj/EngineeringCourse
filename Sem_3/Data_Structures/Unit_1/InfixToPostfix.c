@@ -97,7 +97,7 @@ void intopostfix()
 int isValidInfix()
 {
 	//Checks if the entered infix expression is valid
-	//Returns 1 is valid, 0 otherwise
+	//Returns 1 if valid, 0 otherwise
 	int i,noOfOpenBrackets=0,noOfClosingBrackets=0,noOfDigits=0,noOfOperations=0,isValidInfix=1;
 	for(i=0;infix[i]!='\0';i++)
 	{
