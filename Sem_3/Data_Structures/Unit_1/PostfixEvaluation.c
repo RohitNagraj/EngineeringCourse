@@ -26,7 +26,7 @@ void push(int element)
   //Pushes the input integer into the stack
   if(isFull())
   {
-    printf("Error: Stack overloaded\n");
+    printf("Error: Stack overflow\n");
   }
   else
   {
@@ -75,7 +75,7 @@ int isValidSingleDigitPostfix()
   return (isValidExpression);
 }
 
-//WARNING : DO NOT TRY IMPLEMENT THIS CODE UNLESS YOU UNDERSTAND IT AND ARE ABLE TO EXPLAIN IT.
+//WARNING : DO NOT TRY TO IMPLEMENT THIS CODE UNLESS YOU UNDERSTAND IT AND ARE ABLE TO EXPLAIN IT.
 //IT IS OPTIONAL AND I RECOMMEND YOU DELETE THIS PART FROM YOUR SUBMISSION UNLESS YOU KNOW WHAT YOU ARE DOING.
 int isValidMultiDigitPostfix()
 {
