@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class FibonacciWithRecurssion
+class FibonacciWithRecurrsion
 {
 	static int fibonacci(int n)
 	{
