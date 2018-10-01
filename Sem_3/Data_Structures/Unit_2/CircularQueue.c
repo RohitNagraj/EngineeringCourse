@@ -5,7 +5,7 @@ stands for First In First Out.
 */
 #include<stdio.h>
 #include<stdlib.h>
-#define SIZE 10 //Change the queue size here
+#define SIZE 4 //Change the queue size here
 
 void enqueue(int Q[], int* front, int* rear, int x)
 {
@@ -14,9 +14,7 @@ void enqueue(int Q[], int* front, int* rear, int x)
   //be reflected everywhere else.
   // front and rear are also passed by reference so that any changes made here are reflected in the main and other functions as well.
 
-
-
-  if(*rear == SIZE-1)
+  if( (*rear == *front-1) || (*front==0 && *rear ==SIZE-1))
   {
     printf("Queue is full\n\n\n");
   }
@@ -24,6 +22,13 @@ void enqueue(int Q[], int* front, int* rear, int x)
   else if(*front == -1) //Case of first element
   {
     *front=0;
+    *rear=0;
+    Q[*rear] = x;
+    printf("Enqueued successfully\n\n\n");
+  }
+
+  else if( *rear ==SIZE-1)
+  {
     *rear=0;
     Q[*rear] = x;
     printf("Enqueued successfully\n\n\n");
@@ -43,7 +48,8 @@ int dequeue(int Q[], int* front, int* rear)
   Takes 3 arguments, the queue itself and its front and rear values all passed as reference so that any
   changes made here are reflected everywhere else as well.
   */
-  if(*front==-1)
+  if(*front == -1)
+  //Case when you enter a few elements and then delete then, value of front will be greater than rear.
   {
     printf("Queue is empty\n");
     return 0;
@@ -52,9 +58,16 @@ int dequeue(int Q[], int* front, int* rear)
   else if(*front==*rear)
   {
     temp=*front;
-    *front=-1;
-    *rear=-1;
+    *front = -1;
+    *rear = -1;
     return(Q[temp]);
+  }
+
+  else if(*front == SIZE-1)
+  {
+    temp = *front;
+    *front = 0;
+    return (Q[temp]);
   }
 
   else
@@ -66,15 +79,25 @@ int dequeue(int Q[], int* front, int* rear)
 void display(int Q[], int* front, int* rear)
 {
   int i;
-  if(*front==-1)
+
+  if(*front == -1)
     printf("Queue is empty\n\n\n");
 
   else
   {
     printf("Queue: ");
-    for(i=*front; i<=*rear; i++)
+    i=*front;
+    while(1)
     {
-        printf("%d  ", Q[i] );
+      printf("%d  ", Q[i]);
+
+      if (i==*rear)
+        break;
+
+      i++;
+
+      if(i==SIZE) //If i goes to the end of the array, it will come back to 0.
+        i=0;
     }
     printf("\n\n\n");
   }
@@ -83,7 +106,7 @@ void display(int Q[], int* front, int* rear)
 void main()
 {
   char choice;
-  int x,Q[SIZE],front=-1,rear=-1;
+  int x, Q[SIZE], front=-1, rear=-1;
   while (1)
   {
     printf("1. Enqueue\n");
