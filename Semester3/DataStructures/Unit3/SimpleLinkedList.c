@@ -59,14 +59,14 @@ void newMid(int pos) //Creates a new node in-between the list
 	}
 	else
 	{
-		while(i<pos-1) //Finding the node after which the user want to data
+		while(i<pos) //Finding the node after which the user want to insert data
 		{
 			if (previous == NULL)
 			{
 				printf("Index out of range\n");
 				return;
 			}
-			else
+			else if (pos-i>1)
 				previous = previous->link;
 			i++;
 		}
