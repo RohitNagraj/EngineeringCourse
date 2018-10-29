@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Arrays;
 
-class Q5_Strings
+class Q6_Strings
 {
 	private static int countWord(String s, String word)
         {
@@ -35,6 +35,7 @@ class Q5_Strings
 			System.out.println("7. Exit");
 			System.out.print("Enter your choice: ");
 			choice = sc.nextInt();
+			sc.nextLine();
 			
 			switch(choice)
 			{
@@ -65,7 +66,7 @@ class Q5_Strings
 					break; 
 				case 5:
 					System.out.print("Enter a string to be compared: ");
-					k = sc.next();
+					k = sc.nextLine();
 					System.out.println("The string is same: " + s.equalsIgnoreCase(k));
 					break;
 				case 6:
