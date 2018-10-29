@@ -69,7 +69,7 @@ class Q5_Strings
 					System.out.println("The string is same: " + s.equalsIgnoreCase(k));
 					break;
 				case 6:
-					System.out.print("Enter a string to be comcatinated: ");
+					System.out.print("Enter a string to be concatinated: ");
 					k = sc.next();
 					k = s+k;
 					System.out.println("The concatinated string is: " + k);
