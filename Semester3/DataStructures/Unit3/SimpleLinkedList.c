@@ -1,255 +1,222 @@
 /*
-This is a menu driven program to maintain a simple linked list which allows all operations
-including adding at any position in the list and deleting from any position in the list. 
-The program uses 3 seperate functions to create new nodes at different positions, and uses
-only one function to delete nodes at any position.
+This program implements a simple linked list. All the variables are made global for 
+simplicity and ease of understanding. 
 */
 #include <stdio.h>
-#include<stdlib.h>
-typedef struct node
+#include <stdlib.h>
+struct node
 {
 	int data;
-	struct node* link;
-} node;
+	struct node *link;
+} *head = NULL, *searchPtr = NULL, *ptr = NULL, *newNode = NULL;
 
-node *head = NULL, *temp = NULL;
-
-char menu() //To display the main menu
+void displayMenu()
 {
-	char choice;
-	printf("----------------------------   MENU   ----------------------------\n");
-	printf("1. Add Data\n");
-	printf("2. Delete Data\n");
-	printf("3. Display Data\n");
-	printf("4. Exit\n");
-	printf("Choice: ");
-	fflush(stdin);
-	choice = getchar();
-	return choice;
+	printf("\n\n ----------------  MENU  ----------------\n");
+	printf("1. Insert at the BEGINNING of the list\n");
+	printf("2. Insert at the END of the list\n");
+	printf("3. Insert BEFORE an element in the list\n");
+	printf("4. Insert AFTER an element in the list\n");
+	printf("5. DELETE an element from the list\n");
+	printf("6. Display the linked list\n");
+	printf("0. Exit\n");
 }
 
-void newHead() //Creates a new node at the beginning
+struct node *createNode() //Creates a node with NULL as the link
 {
-	node* temp = (node*) malloc(sizeof(node));
+	int data;
+	newNode = (struct node *)malloc(sizeof(struct node));
 	printf("Enter the data: ");
-	scanf("%d",&temp->data);
-	temp->link = head;
-	head = temp;
+	scanf("%d", &data);
+	newNode->data = data;
+	newNode->link = NULL;
+	//Creates a new node and assigns it to the variable newNode which is a global variable
+	//and the other functions directly access the global variable, hence the function
+	//doesn't return the new node created.
 }
 
-void newMid(int pos) //Creates a new node in-between the list
+void insertBegin() //To insert an element at the beginning of the linked list
 {
-	node* temp = (node*) malloc(sizeof(node));
-	node* next = head; //Denotes the node next to the new node created
-	node* previous = head; //Denotes the node previous to the new node created
-	int i=1;
+	createNode();
 
-	if(head == NULL && pos>1) //If list is empty and user wants to enter somewhere other than beginning
+	newNode->link = head;
+	head = newNode;
+	printf("Inserted successfully\n");
+}
+
+void insertEnd() // To insert at the end of linked list
+{
+	if (head == NULL) // Case when the list is empty
 	{
-		printf("Index out of range\n");
+		insertBegin();
 		return;
 	}
-	else if(head==NULL) //If list is empty and pos = 1
-	{
-		printf("Enter the data: ");
-		scanf("%d",&temp->data);
-		temp->link = NULL;
-		head =temp;
-		return;
-	}
-	else
-	{
-		while(i<pos) //Finding the node after which the user want to insert data
-		{
-			if (previous == NULL)
-			{
-				printf("Index out of range\n");
-				return;
-			}
-			else if (pos-i>1)
-				previous = previous->link;
-			i++;
-		}
-	}
-	
 
-	printf("Enter the data: ");
-	scanf("%d",&temp->data);
+	createNode();
 
-	next = previous->link;
-	previous->link = temp; //Breaking the list and adding the new node
-	temp->link = next;
+	ptr = head;
+	while (ptr->link != NULL) // Loop to find the last node
+		ptr = ptr->link;
+
+	ptr->link = newNode;
+	printf("Inserted successfully\n");
 }
 
-void newTail() //Creates a new node at the end
+struct node *searchNode(int element) // Returns the pointer to the node which contains the
+									 // data that was searched for. Else returns NULL
 {
-	node* temp = (node*) malloc(sizeof(node));
-	node* last = head;
-	printf("Enter the data: ");
-	scanf("%d",&temp->data);
-	temp->link = NULL;
-
-	if(head == NULL)
-		head = temp;
-
-	else
-	{
-		while(last->link!=NULL) //To find the last node
-			last=last->link;
-		last->link = temp;
-	}
-}
-
-void removeNode(int pos) //To remove a node from any given position
-{
-	node* previous = head;
-	node* temp;
-	int i=1;
-
 	if (head == NULL)
 	{
-		printf("List is empty\n\n\n");
+		return NULL;
+	}
+
+	ptr = head;
+	while (ptr != NULL)
+	{
+		if (ptr->data == element)
+			return ptr;
+
+		ptr = ptr->link;
+	}
+	return ptr;
+}
+
+void insertBefore() // To insert a node before an existing node
+{
+	ptr = head;
+
+	if (searchPtr == head) //Case when the user wants to insert before the first node itself
+	{
+		insertBegin();
 		return;
 	}
 
-	else if (head->link == NULL) //Only 1 node
+	while (ptr->link != searchPtr) //Loop to search for the node which stands before the node before which the data has to be entered
+		ptr = ptr->link;
+
+	createNode();
+	ptr->link = newNode;
+	newNode->link = searchPtr;
+	printf("Inserted successfully\n");
+}
+
+void insertAfter() //To insert a node after an existing node
+{
+	ptr = head;
+
+	createNode();
+	newNode->link = searchPtr->link;
+	searchPtr->link = newNode;
+
+	printf("Inserted successfully\n");
+}
+
+void deleteNode() //To delete a node at any location
+{
+	if (searchPtr == head) // Case when the head is to be deleted
 	{
-		if(pos>1)
-		{
-			printf("Index out of range\n");
-			return;
-		}
-		free(previous);
-		head = NULL;
-	}
-	else if(pos == 1) //Removing the first node
-	{
-		temp = head;
+		ptr = head;
 		head = head->link;
-		free(temp);
-	}
-	else
-	{
-		while(i<pos-1) //Finding node to remove
-		{
-			if (previous == NULL)
-			{
-				printf("Index out of range\n");
-				return;
-			}
-			previous=previous->link;
-			i++;
-		}
-		temp = previous->link;
-		previous->link = temp->link;
-		free(temp);
-	}
-}
+		free(ptr);
 
-void addData() //To add a node
-{
-	char choice;
-	int pos;
-	do
-	{
-		printf("\n\nChoose the position of data\n");
-		printf("1. Beginning\n");
-		printf("2. Somewhere in-between\n");
-		printf("3. End\n");
-		printf("Choice: ");
-		fflush(stdin);
-		choice = getchar();
-
-		if(choice<'1' || choice>'3')
-		{
-			printf("Wrong Choice\n");
-		}
-	}
-	while(choice<'1' || choice>'3');
-	
-	switch (choice)
-	{
-		case '1':
-			newHead();
-			break;
-
-		case '2':
-			printf("Enter the specific position: ");
-			fflush(stdin);
-			scanf("%d",&pos);
-			if(pos<1)
-			{
-				printf("Incorrect index\n");
-				return;
-			}
-			newMid(pos);
-			break;
-
-		case '3':
-			newTail();
-			break;
-	}
-}
-
-void deleteData() //To delete a node
-{
-	int pos;
-	
-	printf("Enter the position: ");
-	fflush(stdin);
-	scanf("%d",&pos);
-	if(pos<1)
-	{
-		printf("Incorrect index\n");
+		printf("Deleted successfully\n");
 		return;
 	}
-	removeNode(pos);
+
+	ptr = head;
+	while (ptr->link != searchPtr) //To search for the previous node, that lies before the node to be deleted.
+		ptr = ptr->link;
+	ptr->link = searchPtr->link;
+	free(searchPtr);
+	printf("Deleted successfully\n");
 }
 
-void displayData() //To display all data
+void display()
 {
-	node* temp = head;
-	int i=1;
-	printf("\n\n");
-	if (temp == NULL)
+	if (head == NULL)
+	{
 		printf("List is empty\n");
+		return;
+	}
+
 	else
 	{
-		while(temp != NULL)
+		ptr = head;
+		while (ptr != NULL)
 		{
-			printf("%d. Data: %d Link: %p\n", i++, temp->data, (void*) temp->link);
-			temp = temp->link;
+			printf("%d    ", ptr->data);
+			ptr = ptr->link;
 		}
 	}
-	
-	printf("\n\n\n");
 }
 
 int main()
 {
-	char choice;
-	
+	char menu;
+	int element;
 	while (1)
 	{
-		choice = menu();
+		displayMenu();
+		printf("Enter your choice: ");
+		scanf(" %c", &menu);
 
-		switch (choice)
+		switch (menu)
 		{
-			case '1':
-				addData();
-				displayData();
-				break;
-			case '2':
-				deleteData();
-				displayData();
-				break;
-			case '3':
-				displayData();
-				break;
-			case '4':
-				exit(0);
-			default:
-				printf("Wrong choice\n\n\n");
+		case '1':
+			insertBegin();
+			break;
+
+		case '2':
+			insertEnd();
+			break;
+
+		case '3':
+			printf("Enter the element you want to insert before: ");
+			scanf("%d", &element);
+			searchPtr = searchNode(element);
+
+			if (searchPtr == NULL)
+				printf("The element doesn't exist in the list\n");
+
+			else
+				insertBefore();
+
+			break;
+
+		case '4':
+			printf("Enter the element you want to insert before: ");
+			scanf("%d", &element);
+			searchPtr = searchNode(element);
+
+			if (searchPtr == NULL)
+				printf("The element doesn't exist in the list\n");
+
+			else
+				insertAfter();
+
+			break;
+
+		case '5':
+			printf("Enter the element you want to delete: ");
+			scanf("%d", &element);
+			searchPtr = searchNode(element);
+
+			if (searchPtr == NULL)
+				printf("The element doesn't exist in the list\n");
+
+			else
+				deleteNode();
+			break;
+
+		case '6':
+			display();
+			break;
+		case '0':
+			exit(0);
+			break;
+		default:
+			printf("Wrong choice\n\n\n");
+			break;
 		}
 	}
 	return 0;

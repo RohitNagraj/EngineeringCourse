@@ -105,7 +105,7 @@ void display(int Q[], int* front, int* rear)
   }
 }
 
-void main()
+int main()
 {
   char choice;
   int x, Q[SIZE], front=-1, rear=-1;
@@ -145,4 +145,5 @@ void main()
         printf("Wrong choice\n\n\n");
       }
   }
+  return 0;
 }
