@@ -25,11 +25,9 @@ void displayMenu()
 
 struct node *createNode() //Creates a node with NULL as the link
 {
-    int data;
     newNode = (struct node *)malloc(sizeof(struct node));
     printf("Enter the data: ");
-    scanf("%d", &data);
-    newNode->data = data;
+    scanf("%d", &newNode->data);
     newNode->link = NULL;
     //Creates a new node and assigns it to the variable newNode which is a global variable
     //and the other functions directly access the global variable, hence the function
@@ -213,7 +211,7 @@ int main()
             break;
 
         case '4':
-            printf("Enter the element you want to insert before: ");
+            printf("Enter the element you want to insert after: ");
             scanf("%d", &element);
             searchPtr = searchNode(element);
 
