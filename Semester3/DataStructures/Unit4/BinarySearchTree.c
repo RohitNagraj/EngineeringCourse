@@ -1,5 +1,5 @@
-/*This program implements a binary tree with the inputs from the user, prints it out in all 3 
-tree traversing ways, ie preOrder, inOrder and postOrder traversals.
+/*This program implements a binary search tree with the inputs from the user, prints it out in 
+all 3 tree traversing ways, ie preOrder, inOrder and postOrder traversals.
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -21,40 +21,26 @@ node *createNode(int data)
     return ptr;
 }
 
-void createTree(node *root) //Creates a binary tree with the root given as parameter
+void createBranch(node *root, int data) //Creates a binary tree with the root given as parameter
 {
-    int data;
-    
     if (root == NULL) //Case for first node
     {
-        printf("Enter the root element: ");
-        scanf("%d", &data);
         root = createNode(data);
         tree = root; //Global tree pointer holds this root value as it is the first node
         return;
     }
 
-    printf("Enter the element: ");
-    scanf("%d", &data);
+    if (data >= root->data && root->right != NULL)
+        createBranch(root->right, data);
 
-    while(1)
-    {
-    	if(data >= root->data && root->right != NULL) //If there is an element is the right
-    	{
-    		root = root->right;
-    	}
-    	else if(data < root->data && root->left != NULL) //if there is an element in the left
-    	{
-    		root = root->left;
-    	}
-    	else //if there is no element after the root element in the desired direction
-    		break;
-    }
-    
-    if(data >= root->data)
-    	root->right = createNode(data);
+    else if (data < root->data && root->left != NULL) //if there is an element in the left
+        createBranch(root->left, data);
+
+    else if (data >= root->data)
+        root->right = createNode(data);
+
     else
-    	root->left = createNode(data);
+        root->left = createNode(data);
 }
 
 void preOrderPrint(node *root)
@@ -88,39 +74,40 @@ void postOrderPrint(node *root)
 
 int main()
 {
-    int menu;
-    while(1)
+    int menu, data;
+    while (1)
     {
-    	printf("\n\n1. Insert\n");
-    	printf("2. Print\n");
-    	printf("3. Exit\n");
-    	printf("Enter your choice: ");
-    	scanf(" %d",&menu);
-    	
-    	switch (menu)
-    	{
-    		case 1:
-    			createTree(tree);
-    			break;
-    		case 2:
-    			printf("\nPre order: ");
-		        preOrderPrint(tree);
-		        printf("\nIn order: ");
-		        inOrderPrint(tree);
-		        printf("\nPost order: ");
-		        postOrderPrint(tree);
-		        printf("\n");
-		        break;
-    			
- 		case 3:
- 			exit(0);
-    		
-    		default:
-    			printf("Wrong choice\n\n");
-    			break;
-    	}
+        printf("\n\n1. Insert\n");
+        printf("2. Print\n");
+        printf("3. Exit\n");
+        printf("Enter your choice: ");
+        scanf(" %d", &menu);
+
+        switch (menu)
+        {
+        case 1:
+            printf("Enter the element: ");
+            scanf("%d", &data);
+            createBranch(tree, data);
+            break;
+        case 2:
+            printf("\nPre order: ");
+            preOrderPrint(tree);
+            printf("\nIn order: ");
+            inOrderPrint(tree);
+            printf("\nPost order: ");
+            postOrderPrint(tree);
+            printf("\n");
+            break;
+
+        case 3:
+            exit(0);
+
+        default:
+            printf("Wrong choice\n\n");
+            break;
+        }
     }
-    	
-    
+
     return (0);
 }
