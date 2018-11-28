@@ -14,9 +14,6 @@ node *tree = NULL; //Global pointer to hold the pointer of root node
 
 node *createNode(int data)
 {
-    if (data == -1) //We choose -1 to represent null so when user enters -1, its considered null
-        return NULL;
-
     node *ptr = (node *)malloc(sizeof(node));
     ptr->data = data;
     ptr->left = NULL;
