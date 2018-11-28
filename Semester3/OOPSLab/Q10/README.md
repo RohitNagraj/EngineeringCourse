@@ -3,7 +3,7 @@
 Navigate to the Q10 folder (Do not go inside the main folder) on your system, 
 run the following commands
     
-    javac -d . main/MainClass.java
+    javac main/MainClass.java
     java main/MainClass
 
 # About the program
