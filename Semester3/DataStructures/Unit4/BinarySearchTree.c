@@ -21,24 +21,38 @@ node *createNode(int data)
     return ptr;
 }
 
-void createBranch(node *root, int data) //Creates a binary tree with the root given as parameter
+void createLeaf(node *root) //Creates a binary tree with the root given as parameter
 {
+    int data;
+
     if (root == NULL) //Case for first node
     {
+        printf("Enter the root element: ");
+        scanf("%d", &data);
         root = createNode(data);
         tree = root; //Global tree pointer holds this root value as it is the first node
         return;
     }
 
-    if (data >= root->data && root->right != NULL)
-        createBranch(root->right, data);
+    printf("Enter the element: ");
+    scanf("%d", &data);
 
-    else if (data < root->data && root->left != NULL) //if there is an element in the left
-        createBranch(root->left, data);
+    while (1)
+    {
+        if (data >= root->data && root->right != NULL) //If there is an element is the right
+        {
+            root = root->right;
+        }
+        else if (data < root->data && root->left != NULL) //if there is an element in the left
+        {
+            root = root->left;
+        }
+        else //if there is no element after the root element in the desired direction
+            break;
+    }
 
-    else if (data >= root->data)
+    if (data >= root->data)
         root->right = createNode(data);
-
     else
         root->left = createNode(data);
 }
@@ -72,9 +86,23 @@ void postOrderPrint(node *root)
     }
 }
 
+void deleteBranch(node *root, int data)
+{
+    if (root != NULL)
+    {
+        if (root->data == data)
+        {
+            free(root);
+            return;
+        }
+        preOrderPrint(root->left);
+        preOrderPrint(root->right);
+    }
+}
+
 int main()
 {
-    int menu, data;
+    int menu;
     while (1)
     {
         printf("\n\n1. Insert\n");
@@ -86,9 +114,7 @@ int main()
         switch (menu)
         {
         case 1:
-            printf("Enter the element: ");
-            scanf("%d", &data);
-            createBranch(tree, data);
+            createLeaf(tree);
             break;
         case 2:
             printf("\nPre order: ");
