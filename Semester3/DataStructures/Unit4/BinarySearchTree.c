@@ -86,28 +86,42 @@ void postOrderPrint(node *root)
     }
 }
 
-void deleteBranch(node *root, int data)
+node *deleteBranch(node *root, int data)
 {
     if (root != NULL)
     {
         if (root->data == data)
         {
             free(root);
-            return;
+            return NULL;
         }
-        preOrderPrint(root->left);
-        preOrderPrint(root->right);
+        root->left = deleteBranch(root->left, data);
+        root->right = deleteBranch(root->right, data);
+    }
+}
+
+int searchNode(node *root, int data)
+{
+    if (root == NULL)
+        return 0;
+    else
+    {
+        if (root->data == data)
+            return 1;
+        return (searchNode(root->left, data) || searchNode(root->right, data));
     }
 }
 
 int main()
 {
-    int menu;
+    int menu, x;
     while (1)
     {
         printf("\n\n1. Insert\n");
         printf("2. Print\n");
-        printf("3. Exit\n");
+        printf("3. Search\n");
+        printf("4. Delete\n");
+        printf("5. Exit\n");
         printf("Enter your choice: ");
         scanf(" %d", &menu);
 
@@ -127,6 +141,21 @@ int main()
             break;
 
         case 3:
+            printf("Enter the element to search: ");
+            scanf("%d", &x);
+            if (searchNode(tree, x))
+                printf("Element is present\n");
+            else
+                printf("Element is not present\n");
+            break;
+
+        case 4:
+            printf("Enter the root to delete: ");
+            scanf("%d", &x);
+            deleteBranch(tree, x);
+            break;
+
+        case 5:
             exit(0);
 
         default:
