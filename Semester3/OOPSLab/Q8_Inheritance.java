@@ -64,7 +64,7 @@ public class Q8_Inheritance {
             switch (choice) {
             case 1:
                 System.out.print("Enter radius:");
-                r = sc.nextFloat();
+                r = sc.nextDouble();
                 Circle c = new Circle(r);
                 System.out.println("The area of the circle is: " + c.circleArea());
                 break;
@@ -73,16 +73,16 @@ public class Q8_Inheritance {
                 System.out.print("Enter radius: ");
                 r = sc.nextFloat();
                 System.out.print("Enter angle: ");
-                a = sc.nextFloat();
+                a = sc.nextDouble();
                 Sector s = new Sector(r, a);
                 System.out.println("The area of sector is: " + s.sectorArea());
                 break;
 
             case 3:
                 System.out.print("Enter radius: ");
-                r = sc.nextFloat();
+                r = sc.nextDouble();
                 System.out.print("Enter length of sector: ");
-                l = sc.nextFloat();
+                l = sc.nextDouble();
                 Segment sg = new Segment(r, l);
                 System.out.println("The area of segment is: " + sg.segmentArea());
                 break;
