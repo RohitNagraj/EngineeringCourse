@@ -1,14 +1,19 @@
 
-// To implement LikedList, just change the keyword ArrayList to LinkedList everywhere
+// All the lines that have changed have a comment next to them
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Iterator; //Import iterator
 
-class Q12_ArrayList {
+class Q12_ArrayListWithIterator {
     public static void main(String[] args) {
         ArrayList<String> Q = new ArrayList<>();
+
+        Iterator itr = Q.iterator(); // Initialize iterator
+
         Scanner sc = new Scanner(System.in);
         int choice;
         String x;
+
         while (true) {
             System.out.println("\n\n--------    MENU    --------");
             System.out.println("1. Enqueue");
@@ -31,15 +36,19 @@ class Q12_ArrayList {
                 break;
 
             case 3:
-                for (int i = 0; i < Q.size(); i++) {
-                    System.out.println(Q.get(i));
+                itr = Q.iterator(); // set iterator to Q's iterator
+                while (itr.hasNext()) { // While theres elements remaining in iterator
+                    System.out.println(itr.next()); // itr.next() returns the next element in the list
                 }
                 break;
 
             case 4:
-                for (int i = 0; i < Q.size(); i++) {
-                    if (Q.get(i).length() < 5)
-                        System.out.println(Q.get(i));
+                itr = Q.iterator(); // set iterator to Q's iterator
+                while (itr.hasNext()) { // While theres elements remaining in iterator
+                    String i = (String) itr.next(); // Iterator returns an object of type
+                    // Object type which has to be type casted to string
+                    if (i.length() < 5) // i contains the string now
+                        System.out.println(i); // Print i
                 }
                 break;
             case 5:
