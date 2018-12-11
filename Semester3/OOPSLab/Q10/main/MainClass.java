@@ -28,8 +28,8 @@ public class MainClass {
             switch (menu) {
             case 1:
                 f[counter] = new Faculty();
-                ise.readData(f[counter]); // Calling ise's readData function which in in ISE_Department file with
-                                          // faculty object as parameter
+                ise.readData(f[counter]); // Calling ise's readData function which in in
+                // ISE_Department file with faculty object as parameter
                 counter++;
                 break;
 
@@ -58,8 +58,8 @@ public class MainClass {
                 for (int i = 0; i < counter; i++) {
                     if (f[i] != null) {
                         if (s.equals(f[i].name)) {
-                            f[i] = null; // Makes the pointer in the array null so it doesn't point to that object
-                                         // anymore
+                            f[i] = null; // Makes the pointer in the array null so it doesn't
+                            // point to that object anymore
                             flag = true;
                         }
                     }
