@@ -34,8 +34,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define SIZE 100000 // This is the value that is varied to find the relation between
-// size n and time taken
 
 /** Input-Output:-
  * Input: A 1D array as the first argument and its length as the 2nd argument
@@ -68,14 +66,16 @@ double SelectionSort(int *array, int n)
 
 int main()
 {
-    int i;
+    int i, n;
     double t;
-    int a[SIZE];
-    for (i = 0; i < SIZE; i++) // Generate an array with random values
+    printf("Enter the size of the array: ");
+    scanf("%d", &n);
+    int a[n];
+    for (i = 0; i < n; i++) // Generate an array with random values
     {
         a[i] = rand() % 1000;
     }
-    t = SelectionSort(a, SIZE);
+    t = SelectionSort(a, n);
     printf("Time: %fs\n", t);
     return 0;
 }
