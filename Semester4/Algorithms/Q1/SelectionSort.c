@@ -1,0 +1,98 @@
+/*
+ * @Author: Rohit Nagraj 
+ * @Date: 2019-02-05 18:19:22 
+ * @Last Modified by: Rohit Nagraj
+ * @Last Modified time: 2019-02-05 18:43:38
+ */
+
+/** Question:-
+ * Sort a given set of elements using bubble and selection sort and determine the time
+ * required to sort the elements. Plot a graph of no. of elements vs time taken. 
+ * Specify the time efficiency class of this algorithm. 
+ */
+
+/**
+ * Logic: Take the first element, find the smallest element in the rest of the array,
+ * swap it with the first element. Repeat with 2nd element and so on.
+ * Algorithm: Selection Sort
+ * Time complexity: O(n^2)
+ * Space complexity: O(1)
+ */
+
+/** Psuedo Code:-
+ * 
+ * for i from 0 to n-1
+ *    small  = i
+ * 
+ *    for j from i+1 to n
+ *       if array[j] < array[small]
+ *          small = j
+ * 
+ *    swap array[small] and array[i]   
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#define SIZE 100000 // This is the value that is varied to find the relation between
+// size n and time taken
+
+/** Input-Output:-
+ * Input: A 1D array as the first argument and its length as the 2nd argument
+ * Output: Returns the time taken to sort in seconds
+ * Description: The input array is modified and at the end of the function, the array 
+ * will be sorted.
+ */
+double SelectionSort(int *array, int n)
+{
+    int i, j, smallest, temp;
+    clock_t start = clock();
+
+    for (i = 0; i < n - 1; i++)
+    {
+        smallest = i;
+        for (j = i + 1; j < n; j++) // Loop finds the smallest element from i+1 to n
+        {
+            if (array[j] < array[smallest])
+                smallest = j;
+        }
+
+        // Swap the smallest element with the current ith element
+        temp = array[i];
+        array[i] = array[smallest];
+        array[smallest] = temp;
+    }
+
+    return ((double)(clock() - start)) / CLOCKS_PER_SEC;
+}
+
+int main()
+{
+    int i;
+    double t;
+    int a[SIZE];
+    for (i = 0; i < SIZE; i++) // Generate an array with random values
+    {
+        a[i] = rand() % 1000;
+    }
+    t = SelectionSort(a, SIZE);
+    printf("Time: %fs\n", t);
+    return 0;
+}
+
+/**
+ * Observation:-
+ *  X(size of array)    y(time in s)
+ *      10,000            0.1708
+ *      20,000            0.677
+ *      30,000            1.521
+ *      40,000            2.702
+ *      50,000            4.222
+ *      60,000            6.073
+ *      70,000            8.274
+ *      80,000            10.795
+ *      90,000            13.664
+ *      100,000           16.878
+ * 
+ * -> The code runs on a single thread
+ */
