@@ -35,12 +35,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-/** Input-Output:-
- * Input: A 1D array as the first argument and its length as the 2nd argument
- * Output: Returns the time taken to sort in seconds
- * Description: The input array is modified and at the end of the function, the array 
- * will be sorted.
- */
 double SelectionSort(int *array, int n)
 {
     int i, j, smallest, temp;
@@ -62,6 +56,7 @@ double SelectionSort(int *array, int n)
     }
 
     return ((double)(clock() - start)) / CLOCKS_PER_SEC;
+    // Returns the time taken to run the sorting algorithm
 }
 
 int main()
