@@ -14,7 +14,8 @@ address to view it (ex:  ```d 0000```). Enter this in the command line window at
 10. Enter  ```q``` to quit code view.
 
 ## How to Install an emulator
-1. Download EMU8086 from the link below.  (Only for Windows  https://download.cnet.com/Emu8086-Microprocessor-Emulator/3000-2069_4-10392690.html
+1. Download EMU8086 from the link below.(Only for Windows)
+https://download.cnet.com/Emu8086-Microprocessor-Emulator/3000-2069_4-10392690.html
 2. Install it
 3. Open emulator, open a new file, select COM template. 
 4. Write whatever code you want to write and save it.
