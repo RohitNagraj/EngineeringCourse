@@ -1,5 +1,12 @@
 *.class
 *.exe
+*.OBJ
+*.com
+*.INI
+*.STS
+*.EXE
+*.COM
+
 Semester3/DataStructures/Unit1/.vscode/
 Semester3/DataStructures/Unit2/.vscode/
 *.json
