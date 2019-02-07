@@ -1,4 +1,4 @@
-## How to execute a program in the lab
+# How to execute a program in the lab
 
 1. Boot into DOS
 2. cd into the masm1 folder (in lab systems)
@@ -13,9 +13,9 @@ Press Enter thrice such that all the fields that are asked remain empty
 address to view it (ex:  ```d 0000```). Enter this in the command line window at the bottom.
 10. Enter  ```q``` to quit code view.
 
-## How to Install an emulator
+# How to Install an emulator
 Follow this video
 https://www.youtube.com/watch?v=5NmO9YPU0Xc
 
-# References
+## References
 http://alpbyrs.blogspot.com/2015/06/assembly-language-programming.html
