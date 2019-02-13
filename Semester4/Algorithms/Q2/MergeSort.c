@@ -1,25 +1,26 @@
 /*
  * @Author: Rohit Nagraj 
- * @Date: 2019-02-05 18:19:22 
+ * @Date: 2019-02-13 18:38:06 
  * @Last Modified by: Rohit Nagraj
- * @Last Modified time: 2019-02-05 18:43:38
+ * @Last Modified time: 2019-02-13 19:27:58
  */
 
-/** Question:-
+/* Question:-
  * Sort a given set of elements using merge sort and determine the time
  * required to sort the elements. Plot a graph of no. of elements vs time taken. 
  * Specify the time efficiency class of this algorithm. 
  */
 
-/**
- * Logic: Break the given array into smaller subarrays and sort them. Merge the smaller sorted
+/* Logic: Break the given array into smaller subarrays and sort them. Merge 
+ * the smaller sorted
  * subarrays in a sorted manner to obtain the sorted array.
+ * 
  * Algorithm: Merge Sort
  * Time complexity: O(nlogn)
  * Space complexity: O(n)
  */
 
-/** Psuedo Code:-
+/* Psuedo Code:-
  * 
  * merge(a, low, mid, high)
  *   b = []
@@ -48,56 +49,65 @@
 #include <stdlib.h>
 #include <time.h>
 
+/* Input: Takes in a pointer to the array, the low, mid, high indices wherein
+ * the mid represents the index where the two subarrays to be merged are split.
+ * Example: arr = [4,5,1,2,3], low = 0, mid = 2, high = 5
+ * 
+ * Output: The 2 subarrays are now merged into the same array, now in sorted 
+ * order.
+ * 
+ * Description: It copies the two subarrays into 2 new arrays, then compares the
+ * first values of each array and goes on placing them in the original array.
+ * Example: leftArray = [4,5], rightArray = [1,2,3]. It compares the smallest
+ * elements and places the smaller one in the original array.
+ */
 void merge(int *arr, int low, int mid, int high)
 {
-    int i,j,k;
-    int N1 = mid - low + 1;
-    int N2 = high - mid;
+    int i, j, k;
+    int N1 = mid - low;  // Left half in the array's size
+    int N2 = high - mid; // Size of right half
 
-    int leftArray[N1] , rightArray[N2];
+    int leftArray[N1], rightArray[N2];
 
-    for(i = 0, j = low; j< mid; i++, j++)
+    for (i = 0, j = low; j < mid; i++, j++) // Copies left half of arr to leftArray
         leftArray[i] = arr[j];
 
-    for(i = 0, j = mid; j < high; i++, j++)
+    for (i = 0, j = mid; j < high; i++, j++) // Copies right half of arr to rightArray
         rightArray[i] = arr[j];
 
     i = 0;
     j = 0;
-    for(k = low; k < high; k++)
+    k = low;
+
+    while (i < N1 && j < N2) // As long as there are elements in both arrays
     {
-        if(leftArray[i] < rightArray[j])
-            arr[k++] = leftArray[i++];
+        if (leftArray[i] < rightArray[j])
+            arr[k++] = leftArray[i++]; // Put smaller element into arr and increment both their counters
+
         else
             arr[k++] = rightArray[j++];
     }
 
-    if(i != N1)
-    {
-        for(; i< N1; i++)
-            arr[k++] = leftArray[i++];
-    }
+    while (i < N1) // Empty any remaining elements in leftArray (case when right array is exhausted and left array still contains elements)
+        arr[k++] = leftArray[i++];
 
-    else
-    {
-        for(; j< N2; j++)
-            arr[k++] = rightArray[j++];
-    }
+    while (j < N2) // Empty the rightArray
+        arr[k++] = rightArray[j++];
 }
 
 double mergeSort(int *arr, int low, int high)
 {
-    int mid = (low + high)/2;
+    int mid = (low + high) / 2;
 
-    if(high-low == 1)
+    if (high - low == 1) // Base condition: only 1 element
         return arr[low];
 
     clock_t start = clock();
 
-    mergeSort(arr, low, mid);
-    mergeSort(arr, mid, high);
-    
-    merge(arr, low, mid, high);
+    mergeSort(arr, low, mid);  // Sorts left half
+    mergeSort(arr, mid, high); // Sorts right half
+
+    merge(arr, low, mid, high); // Merges left and right half in sorted manner
 
     return ((double)(clock() - start)) / CLOCKS_PER_SEC;
     // Returns the time taken to run the sorting algorithm
@@ -105,38 +115,34 @@ double mergeSort(int *arr, int low, int high)
 
 int main()
 {
-    // int i, n;
-    // double t;
-    // printf("Enter the size of the array: ");
-    // scanf("%d", &n);
-    // int a[n];
-    // for (i = 0; i < n; i++) // Generate an array with random values
-    // {
-    //     a[i] = rand() % 1000;
-    // }
-    // t = mergeSort(a, 0, n);
-    // printf("Time: %fs\n", t);
-    // return 0;
+    int i, n;
+    double t;
+    printf("Enter the size of the array: ");
+    scanf("%d", &n);
+    int a[n];
 
-    int i, a[] = {4,5,1,2,3};
-    merge(a, 0, 2, 5);
-    for(i = 0; i<5;i++)
-    printf("%d", a[i]);
+    for (i = 0; i < n; i++) // Generate an array with random values
+        a[i] = rand() % 1000;
+
+    t = mergeSort(a, 0, n);
+
+    printf("Time: %fs\n", t);
+    return 0;
 }
 
-/**
+/*
  * Observation:-
  *  X(size of array)    y(time in s)
- *      10,000            0.1708
- *      20,000            0.677
- *      30,000            1.521
- *      40,000            2.702
- *      50,000            4.222
- *      60,000            6.073
- *      70,000            8.274
- *      80,000            10.795
- *      90,000            13.664
- *      100,000           16.878
+ *      10,000            0.020275
+ *      20,000            0.037451
+ *      30,000            0.054474
+ *      40,000            0.070230
+ *      50,000            0.088091
+ *      60,000            0.103341
+ *      70,000            0.120484
+ *      80,000            0.139971
+ *      90,000            0.157736
+ *      100,000           0.171292
  * 
  * -> The code runs on a single thread
  */

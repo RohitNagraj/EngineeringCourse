@@ -2,24 +2,25 @@
  * @Author: Rohit Nagraj 
  * @Date: 2019-02-05 18:19:22 
  * @Last Modified by: Rohit Nagraj
- * @Last Modified time: 2019-02-05 18:43:38
+ * @Last Modified time: 2019-02-13 19:19:59
  */
 
-/** Question:-
+/* Question:-
  * Sort a given set of elements using bubble and selection sort and determine the time
  * required to sort the elements. Plot a graph of no. of elements vs time taken. 
  * Specify the time efficiency class of this algorithm. 
  */
 
-/**
+/*
  * Logic: Take the first element, find the smallest element in the rest of the array,
  * swap it with the first element. Repeat with 2nd element and so on.
+ * 
  * Algorithm: Selection Sort
  * Time complexity: O(n^2)
  * Space complexity: O(1)
  */
 
-/** Psuedo Code:-
+/* Psuedo Code:-
  * 
  * for i from 0 to n-1
  *    small  = i
@@ -75,7 +76,7 @@ int main()
     return 0;
 }
 
-/**
+/*
  * Observation:-
  *  X(size of array)    y(time in s)
  *      10,000            0.1708
