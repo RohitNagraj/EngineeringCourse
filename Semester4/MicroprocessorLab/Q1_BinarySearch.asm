@@ -46,7 +46,7 @@ again:
         jmp display                                               
  success:
         inc al                ; since array is from 0 to n-1
-        add al,30h            ; ascii value
+        add al,30h            ; ascii value of 0
         mov pos,al
         lea dx,msg2
  display:
