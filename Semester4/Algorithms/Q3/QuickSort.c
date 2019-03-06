@@ -2,7 +2,7 @@
  * @Author: Rohit Nagraj 
  * @Date: 2019-02-19 15:53:35 
  * @Last Modified by: Rohit Nagraj
- * @Last Modified time: 2019-02-19 16:08:01
+ * @Last Modified time: 2019-03-06 19:25:26
  */
 
 /* Question:-
@@ -22,7 +22,7 @@
  * Space complexity: O(1)
  */
 
-/* Psuedo Code:-
+/* Pseudo Code:-
  * 
  * partition(arr, low, high)
  *   pivot = arr[high]
