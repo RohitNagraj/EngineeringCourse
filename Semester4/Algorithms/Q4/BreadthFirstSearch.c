@@ -94,7 +94,8 @@ int main()
     printf("The nodes that can be visited are: ");
     for (i = 0; i < n; i++)
         if (isVisited[i] == 1)
-            printf("%d ", i + 1);
+            printf("%d ", i);
+    // Nodes start from 0
 
     printf("\n");
     return (0);
