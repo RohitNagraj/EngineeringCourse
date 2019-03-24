@@ -108,6 +108,6 @@ int main()
  * 0 1 0
  * 0 0 1
  * 0 1 1
- * Enter the starting node: 2
- * The nodes that can be visited are: 2 3
+ * Enter the starting node: 1
+ * The nodes that can be visited are: 1 2
  */
