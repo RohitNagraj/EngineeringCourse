@@ -40,7 +40,7 @@ void shiftTable(char *searchStr)
 
 int horspool(char *str, char *searchStr)
 {
-    int i, j, k, flag = 1, searchStrLen = strlen(searchStr);
+    int i, j, k, searchStrLen = strlen(searchStr);
     shiftTable(searchStr);
 
     i = searchStrLen - 1;
