@@ -18,8 +18,8 @@
  * current item maximizes the profit, add the current item, otherwise keep the
  * previous configuration.
  * Algorithm: Knapsack
- * Time complexity: 
- * Space complexity: 
+ * Time complexity: O(nW), n = no. of items, W = weight of sack
+ * Space complexity: O(nW)
  */
 
 #include <stdio.h>
