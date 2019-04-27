@@ -7,7 +7,7 @@
 
 /*
  * Question: Find Minimum Cost Spanning Tree of a given undirected graph using 
- * Prim‟s/Kruskal‟s algorithm. Give the trace of this algorithm.
+ * Prim's algorithm. Give the trace of this algorithm.
  */
 
 /*
@@ -16,7 +16,7 @@
  * vertex to either of the two and repeat. So you are connecting the closest
  * vertex each time to build out the MST.
  * Time complexity: O(vE) = O(n^2)
- * Spac complexity: O(n)
+ * Space complexity: O(n)
  */
 
 #include <stdio.h>
