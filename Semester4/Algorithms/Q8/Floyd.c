@@ -32,7 +32,7 @@ void floyd(int n)
     for (k = 0; k < n; k++)
         for (i = 0; i < n; i++)
             for (j = 0; j < n; j++)
-                if (arr[i][j] < (arr[i][k] + arr[k][j]))
+                if (arr[i][j] > (arr[i][k] + arr[k][j]))
                     arr[i][j] = arr[i][k] + arr[k][j];
     // If the new path through k is shorter than the existing path, make the
     // shortest path the new one through k.
