@@ -55,6 +55,7 @@ void kruskal(int costMatrix[10][10], int n)
         {
             printf("Edge %d: node %d to node %d, cost: %d\n", ++noOfEdges, a, b, min);
             totalCost += min;
+            parent[v] = u;
         }
         costMatrix[a][b] = costMatrix[b][a] = 1000;
         // Only change costMatrix[a][b] for directed graph
