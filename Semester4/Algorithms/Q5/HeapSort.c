@@ -6,7 +6,7 @@
  */
 
 /* Question:-
- * Sort a given set of elements using merge sort and determine the time
+ * Sort a given set of elements using heap sort and determine the time
  * required to sort the elements. Plot a graph of no. of elements vs time taken. 
  * Specify the time efficiency class of this algorithm. 
  */
