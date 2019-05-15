@@ -38,4 +38,5 @@ Tips: If 2 buttons are pressed, then the elevator will go to the floor which was
 Feel free to send pull requests!
 
 
-## Special Thanks to Nimish Bongale, Raghav Maheshwari, Piyush Mehta and Vybhav Jain.
+### Special Thanks to Nimish Bongale, Raghav Maheshwari, Piyush Mehta and Vybhav Jain
+![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)
