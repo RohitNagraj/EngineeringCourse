@@ -32,3 +32,10 @@ Tips: Same as 8.<br />
 Explaination: https://youtu.be/yE3sZYt_NXI<br />
 Tips: If 2 buttons are pressed, then the elevator will go to the floor which was first pressed
       and completely ignore the second press.<br />
+
+
+## Contributions
+Feel free to send pull requests!
+
+
+## Special Thanks to Nimish Bongale, Raghav Maheshwari, Piyush Mehta and Vybhav Jain.
