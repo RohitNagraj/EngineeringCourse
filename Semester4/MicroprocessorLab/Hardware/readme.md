@@ -40,4 +40,9 @@ Tips: If 2 buttons are pressed, then the elevator will go to the floor which was
 Feel free to send pull requests!
 
 
-### Special Thanks to [Nimish Bongale](https://github.com/nimishbongale), [Yash Jain](https://github.com/mvnsia), [Raghav Maheshwari](https://github.com/raghavddps2), [Piyush Mehta](https://github.com/piyush97) and [Vybhav Jain](https://github.com/vybhavjain)
+### Special Thanks to 
+* [Nimish Bongale](https://github.com/nimishbongale)
+* [Yash Jain](https://github.com/mvnsia)
+* [Raghav Maheshwari](https://github.com/raghavddps2)
+* [Piyush Mehta](https://github.com/piyush97)
+* [Vybhav Jain](https://github.com/vybhavjain)
