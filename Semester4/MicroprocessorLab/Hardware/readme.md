@@ -1,5 +1,7 @@
 # Hardware Programs
 
+![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)
+
 ### 1. Counting no. of ones using Logic Controller Interface
 Explaination: https://youtu.be/dul12fHPFlE <br />
 Tips: Only 4 of the LCIs work in the lab. So if you are sure your code is correct, there is
@@ -39,4 +41,3 @@ Feel free to send pull requests!
 
 
 ### Special Thanks to Nimish Bongale, Raghav Maheshwari, Piyush Mehta and Vybhav Jain
-![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)
