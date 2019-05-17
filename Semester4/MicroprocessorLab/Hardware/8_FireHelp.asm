@@ -1,91 +1,79 @@
-; @Author: Piyush Mehta
-
-assume cs:code, ds:data
+; 7 segment display
+assume cs: code, ds: data
 data segment
-pa equ 20a0h
-pb equ 20a1h
-pc equ 20a2h
-cr equ 20a3h
-
-
-fire db 71h,9fh,0f5h,061h
-help db 0d1h,061h,0e3h,031h
-
-;fire db 61h,0f5h, 9fh, 071h , to print in mirror image
-;help db 031h,0e3h, 061h,0d1h
-
+    pa equ 20a0h
+    pb equ 20a1h
+    pc equ 20a2h
+    cr equ 20a3h
+    fire db 71h, 9fh, 0f5h, 61h
+    help db 0d1h, 61h, 0e3h, 31h
 data ends
 
 code segment
 start:
-        mov ax,data
-        mov ds,ax
+    mov ax, data
+    mov ds, ax
 
-        mov dx,cr
-        mov al,80h    ;activate the hardware
-        out dx,al
+    mov dx, cr
+    mov al, 80h         ; Regular I/O mode
+    out dx, al
+
+    repeat:
+        mov cx, 04
+        lea si, fire
+
+        display_fire:
+            mov al, [si]        ; Call display on every character
+            call display
+            inc si
+            loop display_fire
+
+        call delay      ; Delay after displaying fire
+
+        mov cx, 04
+        lea si, help
+        display_help:
+            mov al,[si]
+            call display
+            inc si
+            loop display_help
         
-rpt: 
-        mov cx,04
-        lea si,fire
+        mov ah, 06h     ; Check for keyboard interrupt
+        mov dl, 0ffh
+        int 21h
+        jz repeat       ; If none, repeat
+    
+    mov ah, 4ch
+    int 21h
 
-nextchar:
-        mov al,[si]
-        call disp
-        inc si
-        loop nextchar
-       ;call disp
-        call delay
-
-       mov cx,04      ; help
-       lea si, help
-  next: 
-        mov al,[si]
-        call disp
-        inc si
-        loop next
-        call delay
-       
-         mov ah, 06h            ;Keyboard  input
-         mov dl,0ffh            ; Don't wait for input
-         int 21h
-
-         jz rpt                 ;continuous loop if no key pressed
-         
-         mov ah,4ch
-         int 21h
-
-disp proc
+    display proc
         push cx
-        mov cx,08       ; 8 segments
-nextbit:
-        mov dx,pb
-        out dx,al
-        push ax
+        mov cx, 08      ; Because 8 bits per character
 
-        mov al, 0ffh
-        mov dx,pc
-        out dx,al
-
-        mov al,00h
-        out dx,al
-        pop ax
-
-        ror al,1
-        loop nextbit
+        nextbit:
+            mov dx, pb  
+            out dx, al  ; Outs one bit at a time to pb
+            push ax
+            mov dx, pc
+            mov al, 0ffh
+            out dx, al
+            mov al, 00h
+            out dx, al
+            pop ax
+            ror al, 1   ; Rotate al for the next bit
+            loop nextbit
         pop cx
         ret
-        disp endp
+    display endp
 
- delay proc
-        mov bx,02fffh
-        l2:mov di,0ddffh
-        l1:dec di
-           jnz l1
-           dec bx
-           jnz l2
-           ret
- delay endp
-
- code ends
- end start
+    delay proc
+        mov bx, 2fffh
+        l1: mov di, ddffh
+        l2: dec di
+        jnz l2
+        dec bx
+        jnz l1
+        ret
+    delay endp
+code ends
+end start
