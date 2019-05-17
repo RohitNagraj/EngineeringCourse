@@ -44,5 +44,6 @@ Feel free to send pull requests!
 * [Nimish Bongale](https://github.com/nimishbongale)
 * [Yash Jain](https://github.com/mvnsia)
 * [Raghav Maheshwari](https://github.com/raghavddps2)
+* [Rishabh Priyadarshi](https://github.com/rishabhp99)
 * [Piyush Mehta](https://github.com/piyush97)
 * [Vybhav Jain](https://github.com/vybhavjain)

@@ -2,12 +2,21 @@
 
 assume cs:code, ds:data
 data segment
+<<<<<<< HEAD
         pa equ 20A0h
         pb equ 20A1h
         pc equ 20A2h
         cr equ 20A3h
         msg db "No of 1s : "
         ones db ?,"$"
+=======
+pa equ 20A0h
+pb equ 20A1h
+pc equ 20A2h
+cr equ 20A3h
+msg db "No of 1's : "
+ones db ?,"$"
+>>>>>>> 411fea820879156c04293b543e57272826f2644a
 data ends
 
 code segment
@@ -43,7 +52,12 @@ start:
         mov dx,pa
         out dx,al       ; output found in Port A
 
+<<<<<<< HEAD
         mov ah,4ch
         int 21h
 code ends
 end start
+=======
+          code ends
+          end start
+>>>>>>> 411fea820879156c04293b543e57272826f2644a
