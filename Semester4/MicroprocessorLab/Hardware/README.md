@@ -5,7 +5,7 @@
 ### 1. Counting no. of ones using Logic Controller Interface
 Explaination: https://youtu.be/dul12fHPFlE <br />
 Tips: Only 4 of the LCIs work in the lab. So if you are sure your code is correct, there is
-a possibility that either the bus is faulty or the LCI.<br />
+a possibility that either the bus is faulty or the LCI   ¯\_(ツ)_/¯ <br />
 
 ### 2A. Ring Counter using Logic Controller Interface <br />
 Explaination: https://youtu.be/MjAd5lLq-po<br />
