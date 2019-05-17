@@ -3,7 +3,7 @@
 assume cs:code, ds:data
 data segment
 pa equ 20A0h
-Pb equ 20A1h
+pb equ 20A1h
 pc equ 20A2h
 cr equ 20A3h
 msg db "No of 1's : "
