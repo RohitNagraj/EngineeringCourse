@@ -2,7 +2,7 @@
  * @Author: Rohit Nagraj 
  * @Date: 2019-05-27 18:20:48 
  * @Last Modified by: Rohit Nagraj
- * @Last Modified time: 2019-05-27 18:28:08
+ * @Last Modified time: 2019-05-27 18:34:36
  */
 #include <stdio.h>
 
@@ -16,7 +16,7 @@ void dfs(int arr[10][10], int n, int node)
     for (i = 0; i < n; i++)
     {
         if (!visited[i] && arr[node][i]) // If a node is connected and not visited, visit it
-            dfs(arr, n, i);
+            dfs(arr, n, i);              // DFS requires a stack to function. Here, we use the system stack itself as we are performing recurssion.
     }
 }
 
