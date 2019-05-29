@@ -15,11 +15,11 @@ start:
         mov ds,ax
 
         mov dx,cr
-        mov al,81h      ; if 81 isn't working, try 80h, 80h gives more torque.
+        mov al,80h
         out dx,al
 
         mov cx,100d     ; This decides the angle. To rotate 90 degrees, this value should be 90/1.8 in decimal.
-        mov al,77h      ; This value decides which coils of the motor are to be activted in order to perform the rotation.
+        mov al,11h      ; This value decides which coils of the motor are to be activted in order to perform the rotation.
         mov dx,pa
 
         rot:
