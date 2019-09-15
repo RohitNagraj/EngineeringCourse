@@ -1,0 +1,68 @@
+<!--Create a html form which accepts two numbers and performs all 4 arithmetic operations on those numbers.-->
+<!DOCTYPE html>
+<html>
+<head>
+<title> operations on numbers </title>
+
+<script type = "text/javascript">
+
+function addby()
+{
+ num1= document.getElementById("firstnumber").value;
+ num2= document.getElementById("secondnumber").value;
+ var x = parseInt(num1) + parseInt(num2) ;
+ document.getElementById("result").innerHTML = x;
+}
+
+
+function multiplyby()
+{
+ num1= document.getElementById("firstnumber").value;
+ num2= document.getElementById("secondnumber").value;
+ var x = parseInt(num1) * parseInt(num2) ;
+ document.getElementById("result").innerHTML = x;
+}
+
+function subtractby()
+{
+ num1= document.getElementById("firstnumber").value;
+ num2= document.getElementById("secondnumber").value;
+ var x = parseInt(num1) - parseInt(num2) ;
+ document.getElementById("result").innerHTML = x;
+}
+
+function divideby()
+{
+ num1= document.getElementById("firstnumber").value;
+ num2= document.getElementById("secondnumber").value;
+ var x = parseInt(num1) / parseInt(num2) ;
+ document.getElementById("result").innerHTML = x;
+}
+
+</script>
+
+
+<body>
+
+<form>
+    <label><b>FILL IN THE NUMBERS</b></label></br>
+
+    <label><b>first number</b></label>
+    <input type="text" name="message" id="firstnumber" ></br></br>
+
+    <label><b>second number</b></label>
+    <input type="text" name="message" id="secondnumber"></br>
+
+   
+  </form>
+<input type="button" value="  +  " onClick="addby();"/>
+<input type="button" value="  -  " onClick="subtractby();"/>
+<input type="button" value="  *  " onClick="multiplyby();"/>
+<input type="button" value="  /  " onClick="divideby();"/> </br>
+
+<p><span id='result'></span></p>
+
+
+</body>
+</head>
+</html>
