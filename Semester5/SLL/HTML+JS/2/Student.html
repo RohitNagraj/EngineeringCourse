@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body style="background-color: blue">
+       <fieldset>
+            <legend>Student Information: </legend>
+        <form onsubmit="changeback()" method="POST">
+            <label>
+                <h4>Name:</h4>
+                <input type="text" name="name">
+            </label>
+            <label>
+                    <h4>USN: </h4>
+                    <input type="text" name="usn">
+            </label><br><br>
+            <input type="radio" name="sem" value="1">1<br>
+            <input type="radio" name="sem" value="2">2<br>
+            <input type="radio" name="sem" value="3">3<br>
+            <input type="radio" name="sem" value="4">4<br>
+            <input type="radio" name="sem" value="5">5<br>
+            <input type="radio" name="sem" value="6">6<br>
+            <input type="radio" name="sem" value="7">7<br>
+            <input type="radio" name="sem" value="8">8<br>
+            <br>
+            <label>
+                <h4>Branch: </h4>
+                <select name="branch" size="3">
+                    <option value="ise">ISE</option>
+                    <option value="cse">CSE</option>
+                    <option value="ece">ECE</option>
+                    <option value="me">ME</option>
+                    <option value="eie">EIE</option>
+                </select>
+            </label><br><br>
+
+            <label>
+                    <h4>Address:</h4>
+                    <input type="text" name="adress">
+                </label>
+
+                <label>
+                        <h4>Previous Grades:</h4>
+                        <input type="digit" name="firstname">
+                    </label><br><br>
+   <input type="submit" value="Submit">
+</form>
+</fieldset>
+    </body>
+<script>
+    changeback = ()=>{
+        alert("Student Entered")
+         }
+</script>
+</html>
