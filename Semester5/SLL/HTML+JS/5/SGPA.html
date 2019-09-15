@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function set(a,b){
+                document.getElementById(a).innerHTML = b;
+            }
+            function disp(){
+                set('resname',document.getElementById('name').value)
+                set('resusn',document.getElementById('usn').value)
+                set('resbranch',document.getElementById('branch').value)
+                set('resadd',document.getElementById('address').value)
+                set('ressgpa',document.getElementById('sgpa').value)
+            }
+            function calc(){
+                disp()
+                var sgpa = parseInt(document.getElementById("sgpa").value)
+                if(sgpa <= 5)
+                set('resmsg',"Work Hard")
+                else if(sgpa<=7)
+                set('resmsg',"Need to put in more effort")
+                else if(sgpa<9)
+                set('resmsg',"Good but could improve")
+                else 
+                set('resmsg',"Excellent")
+            }
+        </script>
+    </head>
+    <body>
+       <fieldset>
+            <legend>Student Information: </legend>
+            <label>
+                <h4>Name:</h4>
+                <input type="text" name="name" id="name">
+            </label>
+            <label>
+                    <h4>USN: </h4>
+                    <input type="text" name="usn" id="usn">
+            </label><br><br>
+            <input type="radio" name="sem" value="1">1<br>
+            <input type="radio" name="sem" value="2">2<br>
+            <input type="radio" name="sem" value="3">3<br>
+            <input type="radio" name="sem" value="4">4<br>
+            <input type="radio" name="sem" value="5">5<br>
+            <input type="radio" name="sem" value="6">6<br>
+            <input type="radio" name="sem" value="7">7<br>
+            <input type="radio" name="sem" value="8">8<br>
+            <br>
+            <label>
+                <h4>Branch: </h4>
+                <select name="branch" size="3" id="branch">
+                    <option value="ise">ISE</option>
+                    <option value="cse">CSE</option>
+                    <option value="ece">ECE</option>
+                    <option value="me">ME</option>
+                    <option value="eie">EIE</option>
+                </select>
+            </label><br><br>
+
+            <label>
+                    <h4>Address:</h4>
+                    <input type="text" name="adress" id="address">
+                </label>
+
+                <label>
+                        <h4>SGPA:</h4>
+                        <input type="number" id="sgpa">
+                    </label><br><br>
+   <input type="submit" value="Submit" onclick="calc()">
+</fieldset><br>
+<fieldset>
+    <legend>Results: </legend>
+<label><strong>Name: </strong> <p id="resname"></p></label>
+<label><strong>USN: </strong> <p id="resusn"></p></label>
+<label><strong>Branch: </strong> <p id="resbranch"></p></label>
+<label><strong>Address: </strong> <p id="resadd"></p></label>
+<label><strong>SGPA: </strong> <p id="ressgpa"></p></label>
+<label><strong>Message: </strong> <p id="resmsg"></p></label>
+</fieldset>
+    </body>
+</html>
