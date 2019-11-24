@@ -1,3 +1,9 @@
+/*
+ * @Author: Rohit Nagraj 
+ * @Date: 2019-11-25 00:22:05 
+ * @Last Modified by:   Rohit Nagraj 
+ * @Last Modified time: 2019-11-25 00:22:05 
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #define min(a, b) (a < b) ? a : b
