@@ -1,2 +1,2 @@
-from atomicity import atomicdictionary
+from Atomicity import atomicdictionary
 atomicdictionary()
