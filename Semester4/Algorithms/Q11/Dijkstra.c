@@ -53,7 +53,7 @@ void dijkstra(int cost[][10], int n, int start)
 
     distance[start] = 0; // Distance of starting node to itself
 
-    for (i = 0; i < n - 1; i++) // N-1 because no. of edges-1 = no. of nodes
+    for (i = 0; i < n - 1; i++) // N-1 because no. of edges = no. of nodes - 1
     {
         min = minDistance(distance, visited, n); // Gets the next closest vertex
 
